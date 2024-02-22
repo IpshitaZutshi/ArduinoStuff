@@ -17,6 +17,9 @@ void setup() {
   pinMode(intanPin3, OUTPUT);
  
   Serial.begin(9600);
+
+  while (Serial.read() != 115) {
+ }
 }
 
 void loop() {
