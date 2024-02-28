@@ -54,6 +54,17 @@
         <io:IncludeHeader>false</io:IncludeHeader>
       </Expression>
       <Expression xsi:type="Combinator">
+        <Combinator xsi:type="StringProperty">
+          <Value>s</Value>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="port:SerialWriteLine">
+          <port:PortName>COM3</port:PortName>
+          <port:NewLine />
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
         <Combinator xsi:type="port:CreateSerialPort">
           <port:PortName>COM3</port:PortName>
           <port:BaudRate>9600</port:BaudRate>
@@ -69,17 +80,6 @@
           <port:ReadBufferSize>4096</port:ReadBufferSize>
           <port:WriteBufferSize>2048</port:WriteBufferSize>
           <port:ReceivedBytesThreshold>1</port:ReceivedBytesThreshold>
-        </Combinator>
-      </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="StringProperty">
-          <Value>s</Value>
-        </Combinator>
-      </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="port:SerialWriteLine">
-          <port:PortName>COM3</port:PortName>
-          <port:NewLine />
         </Combinator>
       </Expression>
       <Expression xsi:type="Combinator">
@@ -134,7 +134,7 @@
       <Edge From="1" To="3" Label="Source1" />
       <Edge From="3" To="4" Label="Source1" />
       <Edge From="4" To="5" Label="Source1" />
-      <Edge From="7" To="8" Label="Source1" />
+      <Edge From="6" To="7" Label="Source1" />
       <Edge From="9" To="10" Label="Source1" />
       <Edge From="10" To="11" Label="Source1" />
       <Edge From="10" To="12" Label="Source1" />
