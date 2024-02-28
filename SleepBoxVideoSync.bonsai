@@ -67,7 +67,7 @@
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="port:CreateSerialPort">
           <port:PortName>COM3</port:PortName>
-          <port:BaudRate>9600</port:BaudRate>
+          <port:BaudRate>57600</port:BaudRate>
           <port:NewLine>\r\n</port:NewLine>
           <port:Parity>None</port:Parity>
           <port:ParityReplace>63</port:ParityReplace>
