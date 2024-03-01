@@ -14,6 +14,7 @@ void setup() {
 }
 
 void loop() {
+
    if (digitalRead(activationPin) == HIGH){
       digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on   
       digitalWrite(diodesPin, HIGH);   // turn the diodes on
