@@ -1,4 +1,4 @@
-//For this, do we want the mice to just roam around and touch the left, right, and home IR or do we also want to train them so that
+ //For this, do we want the mice to just roam around and touch the left, right, and home IR or do we also want to train them so that
 //they know that poking the door IR will open the door?
 #include <Servo.h>
 Servo myServo;
