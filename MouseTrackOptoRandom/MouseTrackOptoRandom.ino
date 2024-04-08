@@ -6,7 +6,7 @@ Servo myServo;
 
 int state = 0;
 
-int phase = 3;  //if phase = 2 (training), both doors open + extended cue
+int phase = 2;  //if phase = 2 (training), both doors open + extended cue
                //if phase = 3 (training), both doors open + variable length cue
                //if phase = 4 HAS DELAY SO WE WILL NOW STICK WITH PHASE 3 FOR EXPERIMENT AS WELL
                
@@ -41,7 +41,7 @@ int numLeft = 0;
 int numRight = 0;
 
 //------------ALL DELAYS---------------------------//                                
-int cueDelay = 4000; // duration of cue           
+int cueDelay = 1500; // duration of cue           
 int doorBaseDelay = 2000; //4000     //DEFAULT IS 2000       
 int varyCue = 0;// if 0, cueDelay is constant, if 1 cueDelay changes;
 int cueDelayTimes[4] = {50,200,500,1000};
