@@ -2,9 +2,9 @@
   32-bit digital barcodes for synchronizing data streams
 */
 
-int OUTPUT_PIN = 13;
+int OUTPUT_PIN = 51;
 int BARCODE_BITS = 32;
-int INTER_BARCODE_INTERVAL = 30; // s
+int INTER_BARCODE_INTERVAL = 10; // s
 
 long barcode;
 
