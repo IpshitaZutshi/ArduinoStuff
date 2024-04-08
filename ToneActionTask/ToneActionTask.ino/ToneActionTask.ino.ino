@@ -19,21 +19,21 @@ const int positionAudioPin = 6;
 
 //Solenoid Pins
 const int solTTLPin1 = 26;  // Ouputpin for close circuit on transistor - #1
-const int solTTLPin3 = 27; // Ouputpin for close circuit on transistor - #3
-const int solTTLPin5 = 28;  // Ouputpin for close circuit on transistor - #5
-const int solTTLPin7 = 29;  // Ouputpin for close circuit on transistor - #7
+const int solTTLPin3 = 30; // Ouputpin for close circuit on transistor - #3
+const int solTTLPin5 = 34;  // Ouputpin for close circuit on transistor - #5
+const int solTTLPin7 = 38;  // Ouputpin for close circuit on transistor - #7
 
 //Capacitance pins
-const int lickTTLPin1 = 30;  // Input pin for touch state - #1
+const int lickTTLPin1 = 27;  // Input pin for touch state - #1
 const int lickTTLPin3 = 31;  // Input pin for touch state - #3
-const int lickTTLPin5 = 32;  // Input pin for touch state - #5
-const int lickTTLPin7 = 33;  // Input pin for touch state - #7
+const int lickTTLPin5 = 35;  // Input pin for touch state - #5
+const int lickTTLPin7 = 37;  // Input pin for touch state - #7
 
 // Speaker pins
-const int toneTTLPin1 = 34; // High if low tone trial
-const int toneTTLPin2 = 35; // High if med tone trial
-const int toneTTLPin3 = 36; // High if high tone trial
-const int toneTTLPin4 = 37; // High if high tone trial
+const int toneTTLPin1 = 32; // High if low tone trial
+const int toneTTLPin2 = 36; // High if med tone trial
+const int toneTTLPin3 = 38; // High if high tone trial
+const int toneTTLPin4 = 28; // High if high tone trial
 
 const int trialTTLPin = 25;  //Sends a TTL at the end of each trial
 
@@ -41,13 +41,13 @@ const int trialTTLPin = 25;  //Sends a TTL at the end of each trial
 
 //Variables to change
 int randSeedNumber = 1789;  //input any random digits
-int training = 0;           //Flag for training. If 0, water delivery happens ONLY after a lick is detected on the correct port
+int training = 1;           //Flag for training. If 0, water delivery happens ONLY after a lick is detected on the correct port
 int probeTrials = 0;        // Flag for whether to include probe trials - here no tone plays, allowing for "uncertainty"
 int probeTrialProb = 20;    // Probability of probe trials if probeTrials = 1
 int cueDur = 500;
 
 // Dont change anything below
-int freq[3] = {4000, 8000, 16000};
+int freq[3] = {4000, 8000, 14000};
 int lickmeterState1 = 0;
 int lickmeterState3 = 0;
 int lickmeterState5 = 0;
@@ -86,6 +86,7 @@ void setup() {
   pinMode(lickPin7, INPUT);  // set pin as INPUT
 
   pinMode(solPin1, OUTPUT);  // set pin as OUTPUT
+  pinMode(solPin3, OUTPUT);  // set pin as OUTPUT
   pinMode(solPin5, OUTPUT);  // set pin as OUTPUT
   pinMode(solPin7, OUTPUT);  // set pin as OUTPUT
 
@@ -145,7 +146,7 @@ void loop() {
       }
     } else if(state == 1){
     // Trial initiated, now play cue if mouse crosses location threshold
-      if ((cueON==0) && (cur_pos> 0.15) && (probeTrialCur==0)){
+      if ((cueON==0) && (cur_pos> 0.08) && (probeTrialCur==0)){
         if (randNumber == 0) {
           toneAC(freq[0],10);
           digitalWrite(toneTTLPin1, HIGH); 
@@ -154,7 +155,7 @@ void loop() {
           toneAC(freq[1],10);
           digitalWrite(toneTTLPin2, HIGH);  
           numMed = numMed+1;  
-        } else if (randNumber == 1) {
+        } else if (randNumber == 2) {
           toneAC(freq[2],10);
           digitalWrite(toneTTLPin3, HIGH);  
           numHigh = numHigh+1;  
@@ -170,8 +171,8 @@ void loop() {
       }     
     } else if(state == 2){
     // Cue played, waiting for mouse to make a choice
-      if(randNumber == 0) { // if low tone, go to port 3
-        if(digitalRead(lickPin3) == HIGH) { // correct
+      if(training==1){
+        if ((randNumber == 0) && (cur_pos>0.24)){
           digitalWrite(solPin3, HIGH);      // ON
           digitalWrite(solTTLPin3, HIGH);   // ON
           digitalWrite(trialTTLPin, HIGH);  // ON
@@ -181,30 +182,7 @@ void loop() {
           currentMillis = millis();
           cueON = 0; 
           toneAC();
-        }
-        else if ((digitalRead(lickPin5) == HIGH) || (digitalRead(lickPin7) == HIGH)){
-          rewardStatus = 0;
-          state = 3;
-          digitalWrite(trialTTLPin, HIGH);  // ON
-          cueON = 0; 
-          toneAC();
-          toneAC(3000, 10);
-          wrongTrial = 1;
-          currentMillis = millis();
-        }
-        else if (millis() - trialCountDown >= timeOutDur) {
-          rewardStatus = 0;
-          state = 3;
-          digitalWrite(trialTTLPin, HIGH);  // ON
-          cueON = 0; 
-          toneAC();
-          toneAC(3000, 10);
-          wrongTrial = 1;
-          currentMillis = millis();
-        }
-      }
-      else if(randNumber == 1) { // if med tone, go to port 5
-        if(digitalRead(lickPin5) == HIGH) { // correct
+        } else if ((randNumber == 1) && (cur_pos>0.64)){
           digitalWrite(solPin5, HIGH);      // ON
           digitalWrite(solTTLPin5, HIGH);   // ON
           digitalWrite(trialTTLPin, HIGH);  // ON
@@ -213,31 +191,8 @@ void loop() {
           correctTrials = correctTrials + 1;
           currentMillis = millis();
           cueON = 0; 
-          toneAC();
-        }
-        else if ((digitalRead(lickPin3) == HIGH) || (digitalRead(lickPin7) == HIGH)){
-          rewardStatus = 0;
-          state = 3;
-          digitalWrite(trialTTLPin, HIGH);  // ON
-          cueON = 0; 
-          toneAC();
-          toneAC(3000, 10);
-          wrongTrial = 1;
-          currentMillis = millis();
-        }
-        else if (millis() - trialCountDown >= timeOutDur) {
-          rewardStatus = 0;
-          state = 3;
-          digitalWrite(trialTTLPin, HIGH);  // ON
-          cueON = 0; 
-          toneAC();
-          toneAC(3000, 10);
-          wrongTrial = 1;
-          currentMillis = millis();
-        }
-      }
-      else if(randNumber == 2) { // if high tone, go to port 7
-        if(digitalRead(lickPin7) == HIGH) { // correct
+          toneAC();          
+        } else if((randNumber == 2) && (cur_pos>0.95)){
           digitalWrite(solPin7, HIGH);      // ON
           digitalWrite(solTTLPin7, HIGH);   // ON
           digitalWrite(trialTTLPin, HIGH);  // ON
@@ -248,25 +203,105 @@ void loop() {
           cueON = 0; 
           toneAC();
         }
-        else if ((digitalRead(lickPin3) == HIGH) || (digitalRead(lickPin5) == HIGH)){
-          rewardStatus = 0;
-          state = 3;
-          digitalWrite(trialTTLPin, HIGH);  // ON
-          cueON = 0; 
-          toneAC();
-          toneAC(3000, 10);
-          wrongTrial = 1;
-          currentMillis = millis();
+      } else if (training==0){
+        if(randNumber == 0) { // if low tone, go to port 3
+          if(digitalRead(lickPin3) == HIGH) { // correct
+            digitalWrite(solPin3, HIGH);      // ON
+            digitalWrite(solTTLPin3, HIGH);   // ON
+            digitalWrite(trialTTLPin, HIGH);  // ON
+            rewardStatus = 1;
+            state = 3;
+            correctTrials = correctTrials + 1;
+            currentMillis = millis();
+            cueON = 0; 
+            toneAC();
+          }
+          else if ((digitalRead(lickPin5) == HIGH) || (digitalRead(lickPin7) == HIGH)){
+            rewardStatus = 0;
+            state = 3;
+            digitalWrite(trialTTLPin, HIGH);  // ON
+            cueON = 0; 
+            toneAC();
+            toneAC(3000, 10);
+            wrongTrial = 1;
+            currentMillis = millis();
+          }
+          else if (millis() - trialCountDown >= timeOutDur) {
+            rewardStatus = 0;
+            state = 3;
+            digitalWrite(trialTTLPin, HIGH);  // ON
+            cueON = 0; 
+            toneAC();
+            toneAC(3000, 10);
+            wrongTrial = 1;
+            currentMillis = millis();
+          }
         }
-        else if (millis() - trialCountDown >= timeOutDur) {
-          rewardStatus = 0;
-          state = 3;
-          digitalWrite(trialTTLPin, HIGH);  // ON
-          cueON = 0; 
-          toneAC();
-          toneAC(3000, 10);
-          wrongTrial = 1;
-          currentMillis = millis();
+        else if(randNumber == 1) { // if med tone, go to port 5
+          if(digitalRead(lickPin5) == HIGH) { // correct
+            digitalWrite(solPin5, HIGH);      // ON
+            digitalWrite(solTTLPin5, HIGH);   // ON
+            digitalWrite(trialTTLPin, HIGH);  // ON
+            rewardStatus = 1;
+            state = 3;
+            correctTrials = correctTrials + 1;
+            currentMillis = millis();
+            cueON = 0; 
+            toneAC();
+          }
+          else if ((digitalRead(lickPin3) == HIGH) || (digitalRead(lickPin7) == HIGH)){
+            rewardStatus = 0;
+            state = 3;
+            digitalWrite(trialTTLPin, HIGH);  // ON
+            cueON = 0; 
+            toneAC();
+            toneAC(3000, 10);
+            wrongTrial = 1;
+            currentMillis = millis();
+          }
+          else if (millis() - trialCountDown >= timeOutDur) {
+            rewardStatus = 0;
+            state = 3;
+            digitalWrite(trialTTLPin, HIGH);  // ON
+            cueON = 0; 
+            toneAC();
+            toneAC(3000, 10);
+            wrongTrial = 1;
+            currentMillis = millis();
+          }
+        }
+        else if(randNumber == 2) { // if high tone, go to port 7
+          if(digitalRead(lickPin7) == HIGH) { // correct
+            digitalWrite(solPin7, HIGH);      // ON
+            digitalWrite(solTTLPin7, HIGH);   // ON
+            digitalWrite(trialTTLPin, HIGH);  // ON
+            rewardStatus = 1;
+            state = 3;
+            correctTrials = correctTrials + 1;
+            currentMillis = millis();
+            cueON = 0; 
+            toneAC();
+          }
+          else if ((digitalRead(lickPin3) == HIGH) || (digitalRead(lickPin5) == HIGH)){
+            rewardStatus = 0;
+            state = 3;
+            digitalWrite(trialTTLPin, HIGH);  // ON
+            cueON = 0; 
+            toneAC();
+            toneAC(3000, 10);
+            wrongTrial = 1;
+            currentMillis = millis();
+          }
+          else if (millis() - trialCountDown >= timeOutDur) {
+            rewardStatus = 0;
+            state = 3;
+            digitalWrite(trialTTLPin, HIGH);  // ON
+            cueON = 0; 
+            toneAC();
+            toneAC(3000, 10);
+            wrongTrial = 1;
+            currentMillis = millis();
+          }
         }
       }
     } 
