@@ -47,7 +47,7 @@ int probeTrialProb = 20;    // Probability of probe trials if probeTrials = 1
 int cueDur = 500;
 
 // Dont change anything below
-int freq[3] = {4000, 8000, 16000};
+int freq[3] = {4000, 8000, 14000};
 int lickmeterState1 = 0;
 int lickmeterState3 = 0;
 int lickmeterState5 = 0;
@@ -145,7 +145,7 @@ void loop() {
       }
     } else if(state == 1){
     // Trial initiated, now play cue if mouse crosses location threshold
-      if ((cueON==0) && (cur_pos> 0.15) && (probeTrialCur==0)){
+      if ((cueON==0) && (cur_pos> 0.08) && (probeTrialCur==0)){
         if (randNumber == 0) {
           toneAC(freq[0],10);
           digitalWrite(toneTTLPin1, HIGH); 
@@ -154,7 +154,7 @@ void loop() {
           toneAC(freq[1],10);
           digitalWrite(toneTTLPin2, HIGH);  
           numMed = numMed+1;  
-        } else if (randNumber == 1) {
+        } else if (randNumber == 2) {
           toneAC(freq[2],10);
           digitalWrite(toneTTLPin3, HIGH);  
           numHigh = numHigh+1;  
