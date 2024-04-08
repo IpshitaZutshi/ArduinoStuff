@@ -1,6 +1,6 @@
  
 
-int phase = 2;    //phase 1 will mean the water will come out of solenoid as long as IR bream is broken. phase 2 will mean the water will only come out for a specific amount of time and will eventually stop. Then there will be a cooldown
+int phase = 1;    //phase 1 will mean the water will come out of solenoid as long as IR bream is broken. phase 2 will mean the water will only come out for a specific amount of time and will eventually stop. Then there will be a cooldown
 int phase2Delay = 1000; // change to increase to 5000 during mouse training
 
 /* ==================== PINS ============================================*/
