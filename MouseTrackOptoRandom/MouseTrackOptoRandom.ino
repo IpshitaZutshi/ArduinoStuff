@@ -10,7 +10,7 @@ int phase = 3;  //if phase = 2 (training), both doors open + extended cue
                //if phase = 3 (training), both doors open + variable length cue
                //if phase = 4 HAS DELAY SO WE WILL NOW STICK WITH PHASE 3 FOR EXPERIMENT AS WELL
                
-int optPhase = 4;   //0 = no stim
+int optPhase = 0;   //0 = no stim
                     //1 = during cue only
                     //2 = during delay only
                     //3 = cue + delay (the 2 seconds)
@@ -19,9 +19,9 @@ int optPhase = 4;   //0 = no stim
                     //6 = starts at a certain duration (delaystimDur) after delay, continues for a specific time (stimDur)
                     //7  = longer delay, stim starts 1s into delay
                     
-boolean stimTrial = true;                    
+boolean stimTrial = false;                    
 
-int blocksSize = 10;//n+1                    
+int blocksSize = 6;//n+1                    
                     
 int modality = 4; // make it "int modality = PUT IN A NUMBER (1,2,3,4) MANUALLY DEPENDING ON WHAT YOU WANT TO DO". For example, if u want to train all mice to do just LED manually enter "modality = 1"
 
@@ -29,6 +29,8 @@ int biasCorrect = 1; //make it 1 or 0, if 1, the probability of a left trial is 
 const int numBiasTrials = 10;
 
 const int numRandTrials = 4;// variable to make sure that the left and right trials are equally presented
+
+int probStim = 65; // Chance that current trial is not an opto trial
 
 int pos = 0;    
 
@@ -39,17 +41,17 @@ int numLeft = 0;
 int numRight = 0;
 
 //------------ALL DELAYS---------------------------//                                
-int cueDelay = 1000; // duration of cue           
+int cueDelay = 3000; // duration of cue           
 int doorBaseDelay = 2000; //4000     //DEFAULT IS 2000       
 int varyCue = 0;// if 0, cueDelay is constant, if 1 cueDelay changes;
 int cueDelayTimes[4] = {50,200,500,1000};
 int stimDur = 2000;
-int delaystimDur = 800;
+int delaystimDur = 1600;
                               
 int speakerDelay = 1000; // time for wrong tone
-int solenoidDelayR =60;//25
-int solenoidDelayL = 60;//25
-int solenoidDelay = 60;
+int solenoidDelayR = 40;//
+int solenoidDelayL = 40;//
+int solenoidDelay = 40;//
 
 //-------------------------------------------------//
 
@@ -166,11 +168,13 @@ void loop(){
   
   if(state == 0) {                                             //state = 0 means home base
     if(digitalRead(IRdoor) == HIGH) {
-      if(blocksCount == blocksSize) {
-        stimTrial = !stimTrial;
-        blocksCount = 1;
-      }      
-          
+//      if(blocksCount == blocksSize) {
+//        stimTrial = !stimTrial;
+//        blocksCount = 1;
+//      }      
+
+      stimTrial = randNumberProb(probStim);
+      
       delayMillis = millis();
       delayON = 1;      
       digitalWrite(delayIntan, HIGH);    
@@ -183,7 +187,7 @@ void loop(){
       if (biasCorrect==0){ // Don't correct for mouse's bias, but make sure that the arduino doesn't generate way more trials towards a certain side
          if (countTrials<numRandTrials){  
             randNumber = random(0,2);     
-            randNumber = 1;      
+          //  randNumber = 1;      
           } else{
               trialsumchoices = 0;
               for (int ii = 0; ii<numRandTrials; ii++){
@@ -192,7 +196,7 @@ void loop(){
               trialbias = round((trialsumchoices/numRandTrials)*100);
               randNumber = randNumberProb(trialbias); //make it so that randNumber is 0 or 1 with the probability of past trials;
               
-           randNumber = 1;
+         //  randNumber = 1;
          }
          for (int ii = 0; ii<(numRandTrials-1); ii++){
            newTrials[ii+1] = pastTrials[ii]; 
