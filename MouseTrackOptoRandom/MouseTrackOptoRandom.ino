@@ -6,7 +6,7 @@ Servo myServo;
 
 int state = 0;
 
-int phase = 3;  //if phase = 2 (training), both doors open + extended cue
+int phase = 2;  //if phase = 2 (training), both doors open + extended cue
                //if phase = 3 (training), both doors open + variable length cue
                //if phase = 4 HAS DELAY SO WE WILL NOW STICK WITH PHASE 3 FOR EXPERIMENT AS WELL
                
@@ -49,9 +49,9 @@ int stimDur = 2000;
 int delaystimDur = 1600;
                               
 int speakerDelay = 1000; // time for wrong tone
-int solenoidDelayR = 40;//
-int solenoidDelayL = 40;//
-int solenoidDelay = 40;//
+int solenoidDelayR = 60;//
+int solenoidDelayL = 60;//
+int solenoidDelay = 60;//
 
 //-------------------------------------------------//
 
@@ -161,7 +161,7 @@ void setup() {
   Serial.flush();
   startMillis  = millis();
 
-  randomSeed(analogRead(1));
+  randomSeed(analogRead(5));
 }
 
 void loop(){
@@ -187,7 +187,8 @@ void loop(){
       if (biasCorrect==0){ // Don't correct for mouse's bias, but make sure that the arduino doesn't generate way more trials towards a certain side
          if (countTrials<numRandTrials){  
             randNumber = random(0,2);     
-          //  randNumber = 1;      
+            
+            //randNumber = 1;      
           } else{
               trialsumchoices = 0;
               for (int ii = 0; ii<numRandTrials; ii++){
@@ -196,7 +197,7 @@ void loop(){
               trialbias = round((trialsumchoices/numRandTrials)*100);
               randNumber = randNumberProb(trialbias); //make it so that randNumber is 0 or 1 with the probability of past trials;
               
-         //  randNumber = 1;
+           //randNumber = 1;
          }
          for (int ii = 0; ii<(numRandTrials-1); ii++){
            newTrials[ii+1] = pastTrials[ii]; 
@@ -206,6 +207,7 @@ void loop(){
       } else if (biasCorrect==1){
           if (countTrials<numBiasTrials){  
             randNumber = random(0,2);
+         //   randNumber = 1;
             
           } else{
               sumchoices = 0;
@@ -221,7 +223,7 @@ void loop(){
           }
           memcpy(pastchoices,newchoices, sizeof(pastchoices));
 
-          //randNumber = 0;
+         // randNumber = 1;
       }
       digitalWrite(IRdoorpin, HIGH); delay(1); digitalWrite(IRdoorpin, LOW);
       
@@ -495,11 +497,15 @@ void loop(){
   else if(state == 2) {    //mouse on its way back to home base but trial hasn't resetted yet
     
     if(digitalRead(IRbase) == HIGH) {
-      //if (wrongTrial == 0){
+//      if (wrongTrial == 0){ //Only reward correct return trials
         digitalWrite(solBase, HIGH); digitalWrite(speakerLeft, HIGH); digitalWrite(baseSolPin, HIGH); 
         delay(solenoidDelay); 
         digitalWrite(solBase, LOW); digitalWrite(baseSolPin, LOW);
-      //}
+//      } else{
+//        digitalWrite(speakerLeft, HIGH); digitalWrite(baseSolPin, HIGH); 
+//        delay(solenoidDelay); 
+//        digitalWrite(baseSolPin, LOW);
+//      }
       if(doorLeftState) {                                             
         servo1.write(closeDoor);
       }

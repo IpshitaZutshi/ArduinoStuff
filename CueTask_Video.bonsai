@@ -94,13 +94,13 @@
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="port:SerialWriteLine">
-          <port:PortName>COM5</port:PortName>
+          <port:PortName>COM6</port:PortName>
           <port:NewLine />
         </Combinator>
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="port:CreateSerialPort">
-          <port:PortName>COM5</port:PortName>
+          <port:PortName>COM6</port:PortName>
           <port:BaudRate>57600</port:BaudRate>
           <port:NewLine>\r\n</port:NewLine>
           <port:Parity>None</port:Parity>
