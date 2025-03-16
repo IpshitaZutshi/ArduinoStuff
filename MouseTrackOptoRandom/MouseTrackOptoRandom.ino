@@ -6,7 +6,7 @@ Servo myServo;
 
 int state = 0;
 
-int phase = 2;  //if phase = 2 (training), both doors open + extended cue
+int phase = 1;  //if phase = 2 (training), both doors open + extended cue
                //if phase = 3 (training), both doors open + variable length cue
                //if phase = 4 HAS DELAY SO WE WILL NOW STICK WITH PHASE 3 FOR EXPERIMENT AS WELL
                
@@ -19,18 +19,19 @@ int optPhase = 0;   //0 = no stim
                     //6 = starts at a certain duration (delaystimDur) after delay, continues for a specific time (stimDur)
                     //7  = longer delay, stim starts 1s into delay
                     
-boolean stimTrial = false;                    
+boolean stimTrial = false;    
+              
 
 int blocksSize = 6;//n+1                    
                     
 int modality = 4; // make it "int modality = PUT IN A NUMBER (1,2,3,4) MANUALLY DEPENDING ON WHAT YOU WANT TO DO". For example, if u want to train all mice to do just LED manually enter "modality = 1"
 
-int biasCorrect = 1; //make it 1 or 0, if 1, the probability of a left trial is the fraction of the last 20 trials gone right
-const int numBiasTrials = 10;
+int biasCorrect = 0; //make it 1 or 0, if 1, the probability of a left trial is the fraction of the last 20 trials gone right
+const int numBiasTrials = 5;
 
 const int numRandTrials = 4;// variable to make sure that the left and right trials are equally presented
 
-int probStim = 65; // Chance that current trial is not an opto trial
+int probStim = 50; // Chance that current trial is NOT an opto trial --> THIS NEEDS TO BE AN INTEGER (1~100). NOT A DECIMAL (ex: 0.65)
 
 int pos = 0;    
 
@@ -41,17 +42,17 @@ int numLeft = 0;
 int numRight = 0;
 
 //------------ALL DELAYS---------------------------//                                
-int cueDelay = 3000; // duration of cue           
+int cueDelay = 2000; // duration of cue           
 int doorBaseDelay = 2000; //4000     //DEFAULT IS 2000       
 int varyCue = 0;// if 0, cueDelay is constant, if 1 cueDelay changes;
 int cueDelayTimes[4] = {50,200,500,1000};
 int stimDur = 2000;
-int delaystimDur = 1600;
+int delaystimDur = 800;
                               
 int speakerDelay = 1000; // time for wrong tone
-int solenoidDelayR = 60;//
-int solenoidDelayL = 60;//
-int solenoidDelay = 60;//
+int solenoidDelayR = 50;//
+int solenoidDelayL = 50;//
+int solenoidDelay = 20;//
 
 //-------------------------------------------------//
 
@@ -161,7 +162,7 @@ void setup() {
   Serial.flush();
   startMillis  = millis();
 
-  randomSeed(analogRead(5));
+  randomSeed(analogRead(1));
 }
 
 void loop(){
@@ -188,7 +189,7 @@ void loop(){
          if (countTrials<numRandTrials){  
             randNumber = random(0,2);     
             
-            //randNumber = 1;      
+           // randNumber = 0;      
           } else{
               trialsumchoices = 0;
               for (int ii = 0; ii<numRandTrials; ii++){
@@ -197,7 +198,7 @@ void loop(){
               trialbias = round((trialsumchoices/numRandTrials)*100);
               randNumber = randNumberProb(trialbias); //make it so that randNumber is 0 or 1 with the probability of past trials;
               
-           //randNumber = 1;
+          //  randNumber = 0;
          }
          for (int ii = 0; ii<(numRandTrials-1); ii++){
            newTrials[ii+1] = pastTrials[ii]; 
@@ -207,7 +208,7 @@ void loop(){
       } else if (biasCorrect==1){
           if (countTrials<numBiasTrials){  
             randNumber = random(0,2);
-         //   randNumber = 1;
+           // randNumber = 0;
             
           } else{
               sumchoices = 0;
@@ -223,7 +224,7 @@ void loop(){
           }
           memcpy(pastchoices,newchoices, sizeof(pastchoices));
 
-         // randNumber = 1;
+         //randNumber = 0;
       }
       digitalWrite(IRdoorpin, HIGH); delay(1); digitalWrite(IRdoorpin, LOW);
       

@@ -12,13 +12,13 @@ IntanInputVoltage = StimGenInputVoltage * 2.5;%*sin((2*pi/1000)*(1:1000)); % Ran
 ProgramPulsePalParam(1, 14, 1); % Sets output channel 1 to use custom train 1
 ProgramPulsePalParam(2, 14, 2); % Sets output channel 2 to use custom train 2
 
-ProgramPulsePalParam(1, 128, 2); % Set trigger channel 1 to toggle mode
+ProgramPulsePalParam(1, 128, 1); % Set trigger channel 1 to toggle mode
 
 ProgramPulsePalParam(1, 12 , 1); % Set output channel 1 to be triggered by trigger channel 1
 ProgramPulsePalParam(2, 12 , 1); % Set output channel 2 to be triggered by trigger channel 1
 
-ProgramPulsePalParam(1, 10 , 20); % Set maximum pulse duration for output channel 1 to be 30 sec
-ProgramPulsePalParam(2, 10 , 20); % Set maximum pulse duration for output channel 2 to be 30 sec
+ProgramPulsePalParam(1, 10 , 5); % Set maximum pulse duration for output channel 1 to be 30 sec
+ProgramPulsePalParam(2, 10 , 5); % Set maximum pulse duration for output channel 2 to be 30 sec
 
 ProgramPulsePalParam(1, 16 , 1); % Set output channel 1 to loop until pulse duration
 ProgramPulsePalParam(2, 16 , 1); % Set output channel 2 to loop until pulse duration

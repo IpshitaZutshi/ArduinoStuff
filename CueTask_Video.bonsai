@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<WorkflowBuilder Version="2.8.1"
+<WorkflowBuilder Version="2.8.5"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xmlns:spk="clr-namespace:Bonsai.Spinnaker;assembly=Bonsai.Spinnaker"
                  xmlns:cv="clr-namespace:Bonsai.Vision;assembly=Bonsai.Vision"
                  xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
                  xmlns:io="clr-namespace:Bonsai.IO;assembly=Bonsai.System"
-                 xmlns:port="clr-namespace:Bonsai.IO.Ports;assembly=Bonsai.System"
+                 xmlns:pal="clr-namespace:Bonsai.PulsePal;assembly=Bonsai.PulsePal"
                  xmlns="https://bonsai-rx.org/2018/workflow">
   <Workflow>
     <Nodes>
@@ -88,32 +88,61 @@
         <io:IncludeHeader>false</io:IncludeHeader>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="FloatProperty">
-          <Value>115</Value>
-        </Combinator>
-      </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="port:SerialWriteLine">
-          <port:PortName>COM6</port:PortName>
-          <port:NewLine />
-        </Combinator>
-      </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="port:CreateSerialPort">
-          <port:PortName>COM6</port:PortName>
-          <port:BaudRate>57600</port:BaudRate>
-          <port:NewLine>\r\n</port:NewLine>
-          <port:Parity>None</port:Parity>
-          <port:ParityReplace>63</port:ParityReplace>
-          <port:DataBits>8</port:DataBits>
-          <port:StopBits>One</port:StopBits>
-          <port:Handshake>None</port:Handshake>
-          <port:DiscardNull>false</port:DiscardNull>
-          <port:DtrEnable>false</port:DtrEnable>
-          <port:RtsEnable>false</port:RtsEnable>
-          <port:ReadBufferSize>4096</port:ReadBufferSize>
-          <port:WriteBufferSize>2048</port:WriteBufferSize>
-          <port:ReceivedBytesThreshold>1</port:ReceivedBytesThreshold>
+        <Combinator xsi:type="pal:CreatePulsePal">
+          <pal:PortName>COM6</pal:PortName>
+          <pal:OutputChannels>
+            <pal:ConfigureOutputChannel>
+              <pal:PortName>COM6</pal:PortName>
+              <pal:Channel>1</pal:Channel>
+              <pal:Biphasic>false</pal:Biphasic>
+              <pal:Phase1Voltage>2</pal:Phase1Voltage>
+              <pal:Phase2Voltage>0</pal:Phase2Voltage>
+              <pal:RestingVoltage>0</pal:RestingVoltage>
+              <pal:Phase1Duration>10</pal:Phase1Duration>
+              <pal:InterPhaseInterval>0</pal:InterPhaseInterval>
+              <pal:Phase2Duration>0.0001</pal:Phase2Duration>
+              <pal:InterPulseInterval>0.0001</pal:InterPulseInterval>
+              <pal:BurstDuration>0</pal:BurstDuration>
+              <pal:InterBurstInterval>0.0001</pal:InterBurstInterval>
+              <pal:PulseTrainDuration>10</pal:PulseTrainDuration>
+              <pal:PulseTrainDelay>0.0001</pal:PulseTrainDelay>
+              <pal:CustomTrainIdentity>None</pal:CustomTrainIdentity>
+              <pal:CustomTrainTarget>PulseOnset</pal:CustomTrainTarget>
+              <pal:CustomTrainLoop>false</pal:CustomTrainLoop>
+              <pal:TriggerOnChannel1>true</pal:TriggerOnChannel1>
+              <pal:TriggerOnChannel2>false</pal:TriggerOnChannel2>
+              <pal:ContinuousLoop>false</pal:ContinuousLoop>
+            </pal:ConfigureOutputChannel>
+            <pal:ConfigureOutputChannel>
+              <pal:PortName>COM6</pal:PortName>
+              <pal:Channel>2</pal:Channel>
+              <pal:Biphasic>false</pal:Biphasic>
+              <pal:Phase1Voltage>3</pal:Phase1Voltage>
+              <pal:Phase2Voltage>0</pal:Phase2Voltage>
+              <pal:RestingVoltage>0</pal:RestingVoltage>
+              <pal:Phase1Duration>10</pal:Phase1Duration>
+              <pal:InterPhaseInterval>0</pal:InterPhaseInterval>
+              <pal:Phase2Duration>0.0001</pal:Phase2Duration>
+              <pal:InterPulseInterval>0.0001</pal:InterPulseInterval>
+              <pal:BurstDuration>0</pal:BurstDuration>
+              <pal:InterBurstInterval>0.0001</pal:InterBurstInterval>
+              <pal:PulseTrainDuration>10</pal:PulseTrainDuration>
+              <pal:PulseTrainDelay>0.0001</pal:PulseTrainDelay>
+              <pal:CustomTrainIdentity>None</pal:CustomTrainIdentity>
+              <pal:CustomTrainTarget>PulseOnset</pal:CustomTrainTarget>
+              <pal:CustomTrainLoop>false</pal:CustomTrainLoop>
+              <pal:TriggerOnChannel1>true</pal:TriggerOnChannel1>
+              <pal:TriggerOnChannel2>false</pal:TriggerOnChannel2>
+              <pal:ContinuousLoop>false</pal:ContinuousLoop>
+            </pal:ConfigureOutputChannel>
+          </pal:OutputChannels>
+          <pal:TriggerChannels>
+            <pal:ConfigureTriggerChannel>
+              <pal:PortName>COM6</pal:PortName>
+              <pal:Channel>1</pal:Channel>
+              <pal:TriggerMode>PulseGated</pal:TriggerMode>
+            </pal:ConfigureTriggerChannel>
+          </pal:TriggerChannels>
         </Combinator>
       </Expression>
     </Nodes>
@@ -128,7 +157,6 @@
       <Edge From="7" To="8" Label="Source1" />
       <Edge From="9" To="10" Label="Source1" />
       <Edge From="10" To="11" Label="Source1" />
-      <Edge From="12" To="13" Label="Source1" />
     </Edges>
   </Workflow>
 </WorkflowBuilder>
