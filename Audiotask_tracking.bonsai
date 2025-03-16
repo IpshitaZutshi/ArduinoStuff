@@ -10,7 +10,7 @@
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="io:CreateSerialPort">
           <io:Name>COM15</io:Name>
-          <io:PortName>COM3</io:PortName>
+          <io:PortName>COM10</io:PortName>
           <io:BaudRate>57600</io:BaudRate>
           <io:Parity>None</io:Parity>
           <io:ParityReplace>63</io:ParityReplace>
