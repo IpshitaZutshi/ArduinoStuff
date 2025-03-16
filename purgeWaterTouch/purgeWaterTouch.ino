@@ -3,27 +3,27 @@ const int solPin1 = 40; // Ouputpin for close circuit on transistor - #1
 const int solPin2 = 42; // Ouputpin for close circuit on transistor - #2
 const int solPin3 = 44; // Ouputpin for close circuit on transistor - #3
 const int solPin4 = 46; // Ouputpin for close circuit on transistor - #4
-const int solPin2 = 48; // Ouputpin for close circuit on transistor - #5
-const int solPin3 = 50; // Ouputpin for close circuit on transistor - #6
-const int solPin4 = 52; // Ouputpin for close circuit on transistor - #7
+const int solPin5 = 48; // Ouputpin for close circuit on transistor - #5
+const int solPin6 = 50; // Ouputpin for close circuit on transistor - #6
+const int solPin7 = 52; // Ouputpin for close circuit on transistor - #7
 
 //Capacitance pins
 const int lickPin1 = 41;  // Input pin for IR #1
 const int lickPin2 = 43;  // Input pin for IR #2
 const int lickPin3 = 45;  // Input pin for IR #3
 const int lickPin4 = 47;  // Input pin for IR #4
-const int lickPin1 = 49;  // Input pin for IR #5
-const int lickPin2 = 51;  // Input pin for IR #6
-const int lickPin3 = 53;  // Input pin for IR #7
+const int lickPin5 = 49;  // Input pin for IR #5
+const int lickPin6 = 21;  // Input pin for IR #6
+const int lickPin7 = 53;  // Input pin for IR #7
 
 //Solenoid Pins                                              
 const int solTTLPin1 = 26; // Ouputpin for close circuit on transistor - #1
 const int solTTLPin2 = 28; // Ouputpin for close circuit on transistor - #2
 const int solTTLPin3 = 30; // Ouputpin for close circuit on transistor - #3
 const int solTTLPin4 = 32; // Ouputpin for close circuit on transistor - #4
-const int solTTLPin2 = 34; // Ouputpin for close circuit on transistor - #5
-const int solTTLPin3 = 36; // Ouputpin for close circuit on transistor - #6
-const int solTTLPin4 = 38; // Ouputpin for close circuit on transistor - #7
+const int solTTLPin5 = 34; // Ouputpin for close circuit on transistor - #5
+const int solTTLPin6 = 36; // Ouputpin for close circuit on transistor - #6
+const int solTTLPin7 = 38; // Ouputpin for close circuit on transistor - #7
 
 int lickmeterState1 = 0;
 int lickmeterState2 = 0;

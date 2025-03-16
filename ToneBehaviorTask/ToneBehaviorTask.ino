@@ -51,7 +51,7 @@ const int optoTTLPin1 = 2;
 /*==================== SETTINGS ========================================================*/
 
 //Variables to change
-int numLinTrials = 0; //input any random digits
+int numLinTrials = 150; //input any random digits
 int randSeedNumber = 1789; //input any random digits
 int trialBlockNum = 201;//If trialBlocks is  1, after how many trials do you want linear trials to start again?
 int training = 0; //Flag for training. If 0, water delivery happens ONLY after a lick is detected on the correct port
