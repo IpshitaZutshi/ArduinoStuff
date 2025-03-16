@@ -35,10 +35,12 @@ int lickmeterStates[7] = { 0, 0, 0, 0, 0, 0, 0 };  // stores the state of the li
 float lickmeterProbs[7] = { 0, 0, 0, 0, 0, 0, 0 };  // stores the probability of each lickmeter giving a reward
 
 // float availableProbs[3] = {0.2, 0.5, 0.8}; // probabilities to choose from. not currently used
-float highProbs[3] = { 0.8, 0.7, 0.5 };
+float highProbs[3] = { 0.8, 0.7, 0.9 };   //{ 0.8, 0.7, 0.5 };
 float lowProbs[3] = { 0.2, 0.1, 0.05 };
 
-int patchProb = 0;
+int numTrialsPatch = 49;
+
+int patchProb = random(2);
 int mostRecent = 0;
 int mostRecentPatch = 0;
 
@@ -185,7 +187,7 @@ void setSolsLow() {
 
 void tracker() {
  //keep track of when to switch patch 
-  if (trialTracker == 39) {  // 40 is number if trials in a patch
+  if (trialTracker == numTrialsPatch) {  // 40 is number if trials in a patch
     int choose = random(2);
     if (mostRecentPatch == 1) {
       patchProb = 0;  // patch 1 has a higher probability
