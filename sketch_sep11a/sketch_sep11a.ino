@@ -3,14 +3,14 @@
 /* ==================== CHOOSE ARM ======================================*/
 
 // Change this from 1 to 4 for now
-int armToTest = 1;
+int armToTest = 2;
 
 
 /* ==================== PINS ============================================*/
 
-int servoPins[4] = {2, 3, 4, 5};
-int pumpPins[4]  = {30, 31, 32, 33};
-int lickPins[4]  = {38, 39, 40, 41};
+int servoPins[8] = {2, 3, 4, 5, 6, 7, 8, 9};
+int pumpPins[8]  = {30, 31, 32, 33, 34, 35, 36, 37};
+int lickPins[8]  = {38, 39, 40, 41, 42, 43, 44, 45};
 
 // Open Ephys digital outputs
 // Arduino Mega pins 22-26 = PORTA
@@ -22,10 +22,10 @@ int ttlPins[5] = {22, 23, 24, 25, 26};
 int sensorTriggeredState = HIGH;
 
 // Continuous rotation servo
-int servoStop = 90;
-int servoMove = 180;
+int servoStop =120;
+int servoMove = 175;
 
-int servoMoveTime = 300;
+int servoMoveTime = 3000;
 int pumpTime = 100;
 
 // How long to hold TTL code
@@ -77,7 +77,7 @@ void loop() {
     // Send arm number as 5-bit code to Open Ephys
     sendTTL(armToTest);
 
-    // Run pump
+    //Run pump
     digitalWrite(pumpPins[arm], LOW);
     delay(pumpTime);
     digitalWrite(pumpPins[arm], HIGH);
