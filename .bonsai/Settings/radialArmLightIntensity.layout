@@ -9,6 +9,14 @@
   </WindowSettings>
   <WindowSettings Index="6">
     <Visible>false</Visible>
+    <Location>
+      <X>1167</X>
+      <Y>524</Y>
+    </Location>
+    <Size>
+      <Width>336</Width>
+      <Height>279</Height>
+    </Size>
     <VisualizerTypeName>Bonsai.Vision.Design.IplImageVisualizer</VisualizerTypeName>
     <VisualizerSettings>
       <IplImageVisualizer />
@@ -49,6 +57,21 @@
       <IplImageVisualizer />
     </VisualizerSettings>
   </WindowSettings>
+  <WindowSettings Index="12">
+    <Visible>false</Visible>
+    <Location>
+      <X>26</X>
+      <Y>26</Y>
+    </Location>
+    <Size>
+      <Width>336</Width>
+      <Height>279</Height>
+    </Size>
+    <VisualizerTypeName>Bonsai.Vision.Design.IplImageVisualizer</VisualizerTypeName>
+    <VisualizerSettings>
+      <IplImageVisualizer />
+    </VisualizerSettings>
+  </WindowSettings>
   <WindowSettings Index="13">
     <Visible>false</Visible>
     <VisualizerTypeName>Bonsai.Design.ObjectTextVisualizer</VisualizerTypeName>
@@ -57,7 +80,14 @@
     </VisualizerSettings>
   </WindowSettings>
   <WindowSettings Index="14">
-    <Visible>false</Visible>
+    <Location>
+      <X>76</X>
+      <Y>523</Y>
+    </Location>
+    <Size>
+      <Width>336</Width>
+      <Height>279</Height>
+    </Size>
     <VisualizerTypeName>Bonsai.Vision.Design.IplImageVisualizer</VisualizerTypeName>
     <VisualizerSettings>
       <IplImageVisualizer />
@@ -65,6 +95,14 @@
   </WindowSettings>
   <WindowSettings Index="15">
     <Visible>false</Visible>
+    <Location>
+      <X>919</X>
+      <Y>133</Y>
+    </Location>
+    <Size>
+      <Width>336</Width>
+      <Height>279</Height>
+    </Size>
     <VisualizerTypeName>Bonsai.Vision.Design.IplImageVisualizer</VisualizerTypeName>
     <VisualizerSettings>
       <IplImageVisualizer />
@@ -72,6 +110,14 @@
   </WindowSettings>
   <WindowSettings Index="16">
     <Visible>false</Visible>
+    <Location>
+      <X>52</X>
+      <Y>52</Y>
+    </Location>
+    <Size>
+      <Width>336</Width>
+      <Height>279</Height>
+    </Size>
     <VisualizerTypeName>Bonsai.Vision.Design.IplImageVisualizer</VisualizerTypeName>
     <VisualizerSettings>
       <IplImageVisualizer />
@@ -203,8 +249,8 @@
   </WindowSettings>
   <WindowSettings Index="35">
     <Location>
-      <X>124</X>
-      <Y>362</Y>
+      <X>466</X>
+      <Y>612</Y>
     </Location>
     <Size>
       <Width>462</Width>

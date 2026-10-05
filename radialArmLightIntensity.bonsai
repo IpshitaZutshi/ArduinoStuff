@@ -66,7 +66,7 @@
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="cv:LoadImage">
-          <cv:FileName>Arduino\backGround.bmp</cv:FileName>
+          <cv:FileName>C:\Users\RWJNESTWR329D02-GEN\Documents\Arduino\backGround.bmp</cv:FileName>
           <cv:Mode>Grayscale</cv:Mode>
         </Combinator>
       </Expression>
@@ -181,7 +181,7 @@ Math.Max(0.0, Math.Min(1.0,
 ))</scr:Expression>
       </Expression>
       <Expression xsi:type="scr:ExpressionTransform">
-        <scr:Expression>Math.Round(it * 255.0)</scr:Expression>
+        <scr:Expression>Math.Round(it * 120.0)</scr:Expression>
       </Expression>
       <Expression xsi:type="Format">
         <Format>{0}</Format>
