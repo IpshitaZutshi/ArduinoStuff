@@ -86,7 +86,7 @@
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="cv:Threshold">
-          <cv:ThresholdValue>110</cv:ThresholdValue>
+          <cv:ThresholdValue>80</cv:ThresholdValue>
           <cv:MaxValue>255</cv:MaxValue>
           <cv:ThresholdType>Binary</cv:ThresholdType>
         </Combinator>
@@ -131,13 +131,13 @@
         <Selector>Y</Selector>
       </Expression>
       <Expression xsi:type="scr:ExpressionTransform">
-        <scr:Expression>it-308</scr:Expression>
+        <scr:Expression>it-320</scr:Expression>
       </Expression>
       <Expression xsi:type="MemberSelector">
         <Selector>X</Selector>
       </Expression>
       <Expression xsi:type="scr:ExpressionTransform">
-        <scr:Expression>it-326</scr:Expression>
+        <scr:Expression>it-320</scr:Expression>
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="rx:CombineLatest" />
@@ -158,30 +158,27 @@
         <Combinator xsi:type="rx:CombineLatest" />
       </Expression>
       <Expression xsi:type="scr:ExpressionTransform">
-        <scr:Expression>it.Item1 &lt; 36 ? 0 : it.Item2</scr:Expression>
+        <scr:Expression>it.Item1 &lt; 50 ? 0 : it.Item2</scr:Expression>
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="rx:CombineLatest" />
       </Expression>
       <Expression xsi:type="scr:ExpressionTransform">
-        <scr:Expression>it.Item1 &lt; 36 ? 0.0 :
+        <scr:Expression>it.Item1 &lt; 50 ? 0.0 :
 Math.Max(0.0, Math.Min(1.0,
-(it.Item1 - 36.0) /
+(it.Item1 - 50.0) /
 (
-  (it.Item2 == 1 ? 293.0 :
-   it.Item2 == 2 ? 287.0 :
+  (it.Item2 == 1 ? 279.0 :
+   it.Item2 == 2 ? 290.0 :
    it.Item2 == 3 ? 283.0 :
-   it.Item2 == 4 ? 266.0 :
-   it.Item2 == 5 ? 250.0 :
-   it.Item2 == 6 ? 253.0 :
-   it.Item2 == 7 ? 264.0 :
-                   286.0)
-  - 36.0
+   it.Item2 == 4 ? 269.0 :
+   it.Item2 == 5 ? 252.0 :
+   it.Item2 == 6 ? 248.0 :
+   it.Item2 == 7 ? 255.0 :
+                   267.0)
+  - 50.0
 )
 ))</scr:Expression>
-      </Expression>
-      <Expression xsi:type="scr:ExpressionTransform">
-        <scr:Expression>Math.Round(it * 120.0)</scr:Expression>
       </Expression>
       <Expression xsi:type="Format">
         <Format>{0}</Format>
@@ -195,25 +192,6 @@ Math.Max(0.0, Math.Min(1.0,
         <Combinator xsi:type="port:CreateSerialPort">
           <port:Name />
           <port:PortName>COM5</port:PortName>
-          <port:BaudRate>115200</port:BaudRate>
-          <port:NewLine>\r\n</port:NewLine>
-          <port:Parity>None</port:Parity>
-          <port:ParityReplace>63</port:ParityReplace>
-          <port:DataBits>8</port:DataBits>
-          <port:StopBits>One</port:StopBits>
-          <port:Handshake>None</port:Handshake>
-          <port:DiscardNull>false</port:DiscardNull>
-          <port:DtrEnable>false</port:DtrEnable>
-          <port:RtsEnable>false</port:RtsEnable>
-          <port:ReadBufferSize>4096</port:ReadBufferSize>
-          <port:WriteBufferSize>2048</port:WriteBufferSize>
-          <port:ReceivedBytesThreshold>1</port:ReceivedBytesThreshold>
-        </Combinator>
-      </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="port:CreateSerialPort">
-          <port:Name>MazeArduino</port:Name>
-          <port:PortName>COM4</port:PortName>
           <port:BaudRate>115200</port:BaudRate>
           <port:NewLine>\r\n</port:NewLine>
           <port:Parity>None</port:Parity>
@@ -270,7 +248,6 @@ Math.Max(0.0, Math.Min(1.0,
       <Edge From="32" To="33" Label="Source1" />
       <Edge From="33" To="34" Label="Source1" />
       <Edge From="34" To="35" Label="Source1" />
-      <Edge From="35" To="36" Label="Source1" />
     </Edges>
   </Workflow>
 </WorkflowBuilder>

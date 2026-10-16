@@ -1,4 +1,4 @@
-const int dirPin = 8;
+const int dirPin = 6;
 const int pwmPin = 9;
 
 String inputString = "";

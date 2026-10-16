@@ -2,8 +2,8 @@
 
 /* ==================== CHOOSE ARM ======================================*/
 
-// Change this from 1 to 4 for now
-int armToTest = 2;
+// Change this from 1 to 8 for now
+int armToTest = 8;
 
 
 /* ==================== PINS ============================================*/
