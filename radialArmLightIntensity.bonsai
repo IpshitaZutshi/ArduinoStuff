@@ -31,7 +31,7 @@
         <Combinator xsi:type="rx:Zip" />
       </Expression>
       <Expression xsi:type="io:CsvWriter">
-        <io:FileName>C:\Users\RWJNESTWR329D02-GEN\Documents\Videos\Top.csv</io:FileName>
+        <io:FileName>C:\Users\RWJNESTWR319D01-GEN\Documents\Videos\Top.csv</io:FileName>
         <io:ListSeparator>\n</io:ListSeparator>
         <io:Append>false</io:Append>
         <io:Overwrite>false</io:Overwrite>
@@ -51,7 +51,7 @@
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="cv:VideoWriter">
-          <cv:FileName>C:\Users\RWJNESTWR329D02-GEN\Documents\Videos\Top.avi</cv:FileName>
+          <cv:FileName>C:\Users\RWJNESTWR319D01-GEN\Documents\Videos\Top</cv:FileName>
           <cv:Suffix>Timestamp</cv:Suffix>
           <cv:Buffered>true</cv:Buffered>
           <cv:Overwrite>false</cv:Overwrite>
@@ -66,7 +66,7 @@
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="cv:LoadImage">
-          <cv:FileName>C:\Users\RWJNESTWR329D02-GEN\Documents\Arduino\backGround.bmp</cv:FileName>
+          <cv:FileName>background.jpg</cv:FileName>
           <cv:Mode>Grayscale</cv:Mode>
         </Combinator>
       </Expression>
@@ -115,7 +115,7 @@
             <cv:Y>0</cv:Y>
           </cv:Offset>
           <cv:MinArea>150</cv:MinArea>
-          <cv:MaxArea>3000</cv:MaxArea>
+          <cv:MaxArea>5000</cv:MaxArea>
         </Combinator>
       </Expression>
       <Expression xsi:type="Combinator">
@@ -185,13 +185,13 @@ Math.Max(0.0, Math.Min(1.0,
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="port:SerialWriteLine">
-          <port:PortName>COM5</port:PortName>
+          <port:PortName>COM4</port:PortName>
         </Combinator>
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="port:CreateSerialPort">
           <port:Name />
-          <port:PortName>COM5</port:PortName>
+          <port:PortName>COM4</port:PortName>
           <port:BaudRate>115200</port:BaudRate>
           <port:NewLine>\r\n</port:NewLine>
           <port:Parity>None</port:Parity>

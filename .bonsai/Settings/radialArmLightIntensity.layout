@@ -31,12 +31,12 @@
   </WindowSettings>
   <WindowSettings Index="8">
     <Location>
-      <X>2206</X>
-      <Y>211</Y>
+      <X>-1829</X>
+      <Y>435</Y>
     </Location>
     <Size>
-      <Width>656</Width>
-      <Height>679</Height>
+      <Width>340</Width>
+      <Height>351</Height>
     </Size>
     <VisualizerTypeName>Bonsai.Vision.Design.IplImageVisualizer</VisualizerTypeName>
     <VisualizerSettings>
@@ -88,8 +88,8 @@
   </WindowSettings>
   <WindowSettings Index="14">
     <Location>
-      <X>907</X>
-      <Y>604</Y>
+      <X>-1466</X>
+      <Y>494</Y>
     </Location>
     <Size>
       <Width>322</Width>
@@ -102,8 +102,8 @@
   </WindowSettings>
   <WindowSettings Index="15">
     <Location>
-      <X>2935</X>
-      <Y>573</Y>
+      <X>-1484</X>
+      <Y>520</Y>
     </Location>
     <Size>
       <Width>336</Width>
@@ -115,7 +115,6 @@
     </VisualizerSettings>
   </WindowSettings>
   <WindowSettings Index="16">
-    <Visible>false</Visible>
     <Location>
       <X>52</X>
       <Y>52</Y>
@@ -130,14 +129,28 @@
     </VisualizerSettings>
   </WindowSettings>
   <WindowSettings Index="17">
-    <Visible>false</Visible>
+    <Location>
+      <X>-1790</X>
+      <Y>135</Y>
+    </Location>
+    <Size>
+      <Width>336</Width>
+      <Height>279</Height>
+    </Size>
     <VisualizerTypeName>Bonsai.Vision.Design.ContoursVisualizer</VisualizerTypeName>
     <VisualizerSettings>
       <ContoursVisualizer />
     </VisualizerSettings>
   </WindowSettings>
   <WindowSettings Index="18">
-    <Visible>false</Visible>
+    <Location>
+      <X>-1816</X>
+      <Y>109</Y>
+    </Location>
+    <Size>
+      <Width>336</Width>
+      <Height>279</Height>
+    </Size>
     <VisualizerTypeName>Bonsai.Vision.Design.ConnectedComponentCollectionVisualizer</VisualizerTypeName>
     <VisualizerSettings>
       <ConnectedComponentCollectionVisualizer />
@@ -234,8 +247,8 @@
   </WindowSettings>
   <WindowSettings Index="26">
     <Location>
-      <X>104</X>
-      <Y>104</Y>
+      <X>-1607</X>
+      <Y>83</Y>
     </Location>
     <Size>
       <Width>416</Width>
@@ -245,17 +258,17 @@
     <VisualizerSettings>
       <TimeSeriesVisualizer>
         <Capacity>640</Capacity>
-        <Min>274.50000000000006</Min>
-        <Max>275.50000000000006</Max>
-        <AutoScale>true</AutoScale>
+        <Min>218.97</Min>
+        <Max>321.03</Max>
+        <AutoScale>false</AutoScale>
       </TimeSeriesVisualizer>
     </VisualizerSettings>
   </WindowSettings>
   <WindowSettings Index="27">
     <Visible>false</Visible>
     <Location>
-      <X>2154</X>
-      <Y>234</Y>
+      <X>-1686</X>
+      <Y>239</Y>
     </Location>
     <Size>
       <Width>416</Width>
@@ -265,8 +278,8 @@
     <VisualizerSettings>
       <TimeSeriesVisualizer>
         <Capacity>640</Capacity>
-        <Min>-1.256</Min>
-        <Max>-1.2510000000000001</Max>
+        <Min>0</Min>
+        <Max>1.1</Max>
         <AutoScale>true</AutoScale>
       </TimeSeriesVisualizer>
     </VisualizerSettings>
@@ -312,6 +325,7 @@
     </VisualizerSettings>
   </WindowSettings>
   <WindowSettings Index="31">
+    <Visible>false</Visible>
     <Location>
       <X>52</X>
       <Y>52</Y>
@@ -324,8 +338,8 @@
     <VisualizerSettings>
       <TimeSeriesVisualizer>
         <Capacity>640</Capacity>
-        <Min>2.8</Min>
-        <Max>3.1999999999999997</Max>
+        <Min>0</Min>
+        <Max>1.1</Max>
         <AutoScale>true</AutoScale>
       </TimeSeriesVisualizer>
     </VisualizerSettings>
@@ -346,10 +360,9 @@
     </VisualizerSettings>
   </WindowSettings>
   <WindowSettings Index="33">
-    <Visible>false</Visible>
     <Location>
-      <X>2102</X>
-      <Y>182</Y>
+      <X>-1140</X>
+      <Y>447</Y>
     </Location>
     <Size>
       <Width>416</Width>
@@ -359,16 +372,16 @@
     <VisualizerSettings>
       <TimeSeriesVisualizer>
         <Capacity>640</Capacity>
-        <Min>0.965</Min>
-        <Max>0.972</Max>
+        <Min>0.7286</Min>
+        <Max>0.73</Max>
         <AutoScale>true</AutoScale>
       </TimeSeriesVisualizer>
     </VisualizerSettings>
   </WindowSettings>
   <WindowSettings Index="34">
     <Location>
-      <X>451</X>
-      <Y>470</Y>
+      <X>-1065</X>
+      <Y>89</Y>
     </Location>
     <Size>
       <Width>462</Width>

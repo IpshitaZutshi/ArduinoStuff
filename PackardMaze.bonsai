@@ -32,7 +32,7 @@
         <Combinator xsi:type="rx:Zip" />
       </Expression>
       <Expression xsi:type="io:CsvWriter">
-        <io:FileName>C:\Users\RWJNESTWR329D02-GEN\Documents\Videos\Top.csv</io:FileName>
+        <io:FileName>C:\Users\RWJNESTWR319D01-GEN\Documents\Videos\Top.csv</io:FileName>
         <io:ListSeparator>\n</io:ListSeparator>
         <io:Append>false</io:Append>
         <io:Overwrite>false</io:Overwrite>
@@ -52,7 +52,7 @@
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="cv:VideoWriter">
-          <cv:FileName>C:\Users\RWJNESTWR329D02-GEN\Documents\Videos\Top.avi</cv:FileName>
+          <cv:FileName>C:\Users\RWJNESTWR319D01-GEN\Documents\Videos\Top.avi</cv:FileName>
           <cv:Suffix>Timestamp</cv:Suffix>
           <cv:Buffered>true</cv:Buffered>
           <cv:Overwrite>false</cv:Overwrite>
@@ -68,8 +68,8 @@
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="port:CreateSerialPort">
           <port:Name />
-          <port:PortName>COM4</port:PortName>
-          <port:BaudRate>115200</port:BaudRate>
+          <port:PortName>COM6</port:PortName>
+          <port:BaudRate>57600</port:BaudRate>
           <port:NewLine>\r\n</port:NewLine>
           <port:Parity>None</port:Parity>
           <port:ParityReplace>63</port:ParityReplace>
@@ -85,10 +85,13 @@
         </Combinator>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="port:SerialReadLine" />
+        <Combinator xsi:type="port:SerialReadLine">
+          <port:PortName>COM6</port:PortName>
+          <port:NewLine>\n</port:NewLine>
+        </Combinator>
       </Expression>
       <Expression xsi:type="io:CsvWriter">
-        <io:FileName>C:\Users\RWJNESTWR329D02-GEN\Documents\Videos\MazeBehavior.csv</io:FileName>
+        <io:FileName>C:\Users\RWJNESTWR319D01-GEN\Documents\Videos\MazeBehavior.txt</io:FileName>
         <io:ListSeparator>\n</io:ListSeparator>
         <io:Append>false</io:Append>
         <io:Overwrite>false</io:Overwrite>
@@ -97,7 +100,7 @@
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="wie:KeyDown">
-          <wie:Filter>Space</wie:Filter>
+          <wie:Filter>Up</wie:Filter>
           <wie:SuppressRepetitions>true</wie:SuppressRepetitions>
         </Combinator>
       </Expression>
@@ -106,7 +109,21 @@
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="port:SerialWriteLine">
-          <port:PortName>COM4</port:PortName>
+          <port:PortName>COM6</port:PortName>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="wie:KeyDown">
+          <wie:Filter>Space</wie:Filter>
+          <wie:SuppressRepetitions>true</wie:SuppressRepetitions>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="scr:ExpressionTransform">
+        <scr:Expression> " "</scr:Expression>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="port:SerialWriteLine">
+          <port:PortName>COM6</port:PortName>
         </Combinator>
       </Expression>
     </Nodes>
@@ -124,6 +141,8 @@
       <Edge From="11" To="12" Label="Source1" />
       <Edge From="13" To="14" Label="Source1" />
       <Edge From="14" To="15" Label="Source1" />
+      <Edge From="16" To="17" Label="Source1" />
+      <Edge From="17" To="18" Label="Source1" />
     </Edges>
   </Workflow>
 </WorkflowBuilder>
